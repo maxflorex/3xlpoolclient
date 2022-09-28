@@ -1,6 +1,5 @@
 import React from 'react'
 import Layout from '../components/Layout'
-import Dummy from '../components/Dummy'
 import PoolList from '../components/PoolList'
 
 const HomeScreen = () => {
@@ -26,4 +25,4 @@ export default HomeScreen
 // #3C3F58
 
 // bg4-pale
-// #707793
+// #707793clear

@@ -3,15 +3,15 @@ import React from 'react'
 import { useNavigation } from '@react-navigation/native'
 import { getQuestions } from '../Api'
 
-export default function PoolItem({ }) {
+export default function PoolItem({ question, handleDelete }) {
 
     const navigation = useNavigation()
 
     return (
         <View styles={styles.itemContainer}>
             <TouchableOpacity onPress={() => navigation.navigate('PoolFormScreen', { id: getQuestions.id })}>
-                <Text style={styles.itemTitle}>{task.title}</Text>
-                <Text style={styles.itemTitle}>{task.reaction}</Text>
+                <Text style={styles.itemTitle}>{question.title}</Text>
+                <Text style={styles.itemTitle}>{question.reaction}</Text>
             </TouchableOpacity>
         </View>
     )

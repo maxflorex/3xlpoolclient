@@ -7,6 +7,7 @@ import PoolItem from './PoolItem'
 export default function PoolList() {
     const [q, setQ] = useState([])
     const [refreshing, setRrefreshing] = useState(false)
+    
 
     // CURRENT FOCUS OF THE STATE
     const focused = useIsFocused()

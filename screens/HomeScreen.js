@@ -1,11 +1,13 @@
 import React from 'react'
-import Layout from '../components/Layout'
-import PoolList from '../components/PoolList'
+import Checkbox from '../src/components/CheckBox'
+import Layout from '../src/components/Layout'
+import PoolList from '../src/components/PoolList'
 
 const HomeScreen = () => {
     return (
         <Layout>
             <PoolList />
+            <Checkbox />
         </Layout >
     )
 }

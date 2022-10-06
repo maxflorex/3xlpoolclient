@@ -1,7 +1,7 @@
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native'
 import React from 'react'
 import { useNavigation } from '@react-navigation/native'
-import { getQuestions } from '../Api'
+import { getQuestions } from '../../Api'
 
 export default function PoolItem({ question, handleDelete }) {
 

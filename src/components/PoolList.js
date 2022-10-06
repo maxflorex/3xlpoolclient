@@ -1,8 +1,9 @@
 import { View, Text, FlatList, RefreshControl } from 'react-native'
 import React, { useEffect, useState } from 'react'
-import { deleteQuestion, getQuestions } from '../Api'
+import { deleteQuestion, getQuestions } from '../../Api'
 import { useIsFocused } from '@react-navigation/native'
 import PoolItem from './PoolItem'
+import Layout from './Layout'
 
 export default function PoolList() {
     const [q, setQ] = useState([])
@@ -43,7 +44,7 @@ export default function PoolList() {
 
 
     return (
-        <View>
+        <Layout>
             <Text>{q && q.length > 0 ? 'Yes' : 'Not working'}</Text>
             <FlatList
                 style={{ width: '100%' }}
@@ -59,6 +60,6 @@ export default function PoolList() {
                     />
                 }
             />
-        </View>
+        </Layout>
     )
 }

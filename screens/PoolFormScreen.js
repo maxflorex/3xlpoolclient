@@ -2,7 +2,8 @@ import { useEffect, useState } from "react"
 import { StatusBar, StyleSheet, Text } from "react-native"
 import { TextInput } from "react-native-gesture-handler"
 import { getQuestion, saveQuestion, updateQuestion } from "../Api"
-import Layout from "../components/Layout"
+import Checkbox from "../src/components/CheckBox"
+import Layout from "../src/components/Layout"
 
 
 const PoolFormScreen = ({ navigation, route }) => {
@@ -49,7 +50,7 @@ const PoolFormScreen = ({ navigation, route }) => {
     // COMPONENT
     return (
         <Layout>
-            <Text style={styles.h1}>Propuesta</Text>
+            <Text style={styles.h1}>PROPONER TOPICO</Text>
             <TextInput
                 placeholder="What's on your mind"
                 placeholderTextColor="#2e3047"
@@ -57,6 +58,7 @@ const PoolFormScreen = ({ navigation, route }) => {
                 onChangeText={(text) => handleChange('title', text)}
                 value={question.title}
             />
+            <Checkbox />
         </Layout>
     )
 }

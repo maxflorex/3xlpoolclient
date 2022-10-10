@@ -1,5 +1,6 @@
-import { useState } from "react"
-import { FlatList, StyleSheet, Text, View } from "react-native"
+import { useEffect, useState } from "react"
+import { Alert, FlatList, StyleSheet, Text, View } from "react-native"
+import { useDispatch } from "react-redux"
 import CheckItem from "./CheckItem"
 import Layout from "./Layout"
 
@@ -28,16 +29,20 @@ const data = [
 
 const Checkbox = () => {
     const [result, setResult] = useState(0)
+
+    useEffect(() => {
+        console.log(result);
+    }, [result])
+
+    // REDUX
+    const dispatch = useDispatch()
+
     return (
-        <>
+        <Layout>
             <Text>{result}</Text>
-            <FlatList
-                style={{ width: '100%' }}
-                data={data}
-                keyExtractor={item => item.reaction}
-                renderItem={(item) => CheckItem(item)}
-            />
-        </>
+            <CheckItem emoji='❤' onPress={() => setResult('emoji')} />
+            <CheckItem emoji='💔' onPress={() => setResult('emoji')} />
+        </Layout>
     )
 }
 

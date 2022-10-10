@@ -1,12 +1,16 @@
-import { View, Text, StyleSheet, FlatList } from 'react-native'
-import React from 'react'
+import { View, Text, StyleSheet, FlatList, Alert } from 'react-native'
+import React, { useState } from 'react'
 import { TouchableOpacity } from 'react-native-gesture-handler'
+import { useDispatch } from 'react-redux'
+import { generateReaction } from '../features/reactionSlice';
 
 
-export default function CheckItem({ item }) {
+
+
+export default function CheckItem( props ) {
     return (
-        <TouchableOpacity style={styles.item}>
-            <Text style={styles.p}>{item.emoji}</Text>
+        <TouchableOpacity style={styles.item} >
+            <Text style={styles.p}>{props.emoji}</Text>
         </TouchableOpacity>
     )
 }
@@ -26,7 +30,8 @@ const styles = StyleSheet.create({
         marginVertical: gap / 2,
         padding: 16,
         borderRadius: 8,
-        alignItems: 'stretch'
+        alignItems: 'stretch',
+        width: '100%'
     },
     p: {
         color: 'white',

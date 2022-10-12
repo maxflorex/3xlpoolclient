@@ -1,6 +1,6 @@
-import { View, Text, FlatList, RefreshControl } from 'react-native'
+import { View, Text, FlatList, RefreshControl, TextInput, Button, StyleSheet } from 'react-native'
 import React, { useEffect, useState } from 'react'
-import { deleteQuestion, getQuestions } from '../../Api'
+import { deleteQuestion, getQuestions, getSong } from '../../Api'
 import { useIsFocused } from '@react-navigation/native'
 import PoolItem from './PoolItem'
 import Layout from './Layout'
@@ -8,7 +8,13 @@ import Layout from './Layout'
 export default function PoolList() {
     const [q, setQ] = useState([])
     const [refreshing, setRrefreshing] = useState(false)
-    
+    const [s, setS] = useState({
+        artist: '',
+        song: ''
+    })
+    const [song, setSong] = useState('')
+    const [artist, setArtist] = useState('')
+
 
     // CURRENT FOCUS OF THE STATE
     const focused = useIsFocused()
@@ -42,6 +48,14 @@ export default function PoolList() {
         setRrefreshing(false)
     })
 
+    // GET SONGS
+    const onSubmitSong = async () => {
+        const data = await getSong(artist, song)
+        setS(data)
+    }
+
+    console.log(s)
+
 
     return (
         <Layout>
@@ -60,6 +74,37 @@ export default function PoolList() {
                     />
                 }
             />
+            <View style={styles.box}>
+                <TextInput
+                    placeholder="Artist"
+                    placeholderTextColor="#2e3047"
+                    style={styles.input}
+                    onChangeText={(text) => setArtist(text)}
+                />
+                <TextInput
+                    placeholder="Song"
+                    placeholderTextColor="#2e3047"
+                    style={styles.input}
+                    onChangeText={(text) => setSong(text)}
+                />
+            </View>
+            <Button onPress={() => onSubmitSong()} title="Learn More"
+                color="#841584" />
+
+
         </Layout>
     )
 }
+
+const styles = StyleSheet.create({
+    input: {
+        backgroundColor: '#ffffff',
+        width: '50%',
+        padding: 8,
+        marginBottom: 8
+    },
+    box: {
+        width: '100%'
+    }
+})
+

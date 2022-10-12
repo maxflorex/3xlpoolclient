@@ -7,7 +7,6 @@ const HomeScreen = () => {
     return (
         <Layout>
             <PoolList />
-            <Checkbox />
         </Layout >
     )
 }

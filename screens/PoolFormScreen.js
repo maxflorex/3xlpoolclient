@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react"
-import { StatusBar, StyleSheet, Text } from "react-native"
+import { Button, StatusBar, StyleSheet, Text, TouchableOpacity } from "react-native"
 import { TextInput } from "react-native-gesture-handler"
 import { getQuestion, saveQuestion, updateQuestion } from "../Api"
-import Checkbox from "../src/components/CheckBox"
 import Layout from "../src/components/Layout"
 
 
 const PoolFormScreen = ({ navigation, route }) => {
     const [editing, setEditing] = useState(false)
+
 
     // FIELD STATES
     const [question, setQuestion] = useState({
@@ -17,16 +17,17 @@ const PoolFormScreen = ({ navigation, route }) => {
 
     // ON CHANGE
     const handleChange = (name, value) => {
-        setQuestion({ ...question, })
+        setQuestion({ ...question, [name]: value })
     }
 
     // ON SUBMIT
     const handleSubmit = async () => {
         try {
             if (!editing) {
-                saveQuestion(question)
+                await saveQuestion(question)
             } else {
-                updateQuestion(route.params.id, question)
+                console.log(route.parmas.id, task);
+                await updateQuestion(route.params.id, { ...question })
             }
             navigation.navigate('Home')
         } catch (error) {
@@ -34,18 +35,20 @@ const PoolFormScreen = ({ navigation, route }) => {
         }
     }
 
+
+
     // SIDE EFFECTS
     useEffect(() => {
         if (route.params && route.params.id) {
             setEditing(true)
             navigation.setOptions({ headerTitle: 'Updating Question' })
-        }
 
-        (async () => {
-            const q = await getQuestion(route.params.id)
-            setQuestion({ title: q.title, description: q.reaction })
-        })()
-    })
+                (async () => {
+                    const q = await getQuestion(route.params.id)
+                    setQuestion({ title: q.title, description: q.reaction })
+                })()
+        }
+    }, [])
 
     // COMPONENT
     return (
@@ -56,9 +59,17 @@ const PoolFormScreen = ({ navigation, route }) => {
                 placeholderTextColor="#2e3047"
                 style={styles.input}
                 onChangeText={(text) => handleChange('title', text)}
-                value={question.title}
             />
-            <Checkbox />
+            {!editing ? (
+                <TouchableOpacity style={styles.btn} onPress={handleSubmit}>
+                    <Text>Save</Text>
+                </TouchableOpacity>
+
+            ) : (
+                <TouchableOpacity style={styles.btn} onPress={handleSubmit}>
+                    <Text>Update</Text>
+                </TouchableOpacity>
+            )}
         </Layout>
     )
 }
@@ -75,6 +86,12 @@ const styles = StyleSheet.create({
         color: '#707793',
         paddingBottom: 16,
         fontWeight: 'bold'
+    },
+    btn: {
+        backgroundColor: '#3BBA9C',
+        padding: 8,
+        marginTop: 16,
+        borderRadius: 4
     }
 })
 

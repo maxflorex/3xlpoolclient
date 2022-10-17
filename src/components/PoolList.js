@@ -8,10 +8,6 @@ import Layout from './Layout'
 export default function PoolList() {
     const [q, setQ] = useState([])
     const [refreshing, setRrefreshing] = useState(false)
-    const [s, setS] = useState({
-        artist: '',
-        song: ''
-    })
     const [song, setSong] = useState('')
     const [artist, setArtist] = useState('')
 
@@ -54,8 +50,6 @@ export default function PoolList() {
         setS(data)
     }
 
-    console.log(s)
-
 
     return (
         <Layout>
@@ -74,6 +68,10 @@ export default function PoolList() {
                     />
                 }
             />
+            {
+                artist !== '' &&
+                <Text>{artist}</Text>
+            }
             <View style={styles.box}>
                 <TextInput
                     placeholder="Artist"
@@ -88,7 +86,7 @@ export default function PoolList() {
                     onChangeText={(text) => setSong(text)}
                 />
             </View>
-            <Button onPress={() => onSubmitSong()} title="Learn More"
+            <Button onPress={() => onSubmitSong()} title="Search"
                 color="#841584" />
 
 
@@ -99,12 +97,20 @@ export default function PoolList() {
 const styles = StyleSheet.create({
     input: {
         backgroundColor: '#ffffff',
-        width: '50%',
+        width: '48%',
         padding: 8,
-        marginBottom: 8
+        marginBottom: 8,
+        alignSelf: 'center',
+        borderColor: '#ffffff',
+        borderWidth: 2,
+        borderRadius: 8,
+        margin: '2%'
     },
     box: {
-        width: '100%'
+        width: '100%',
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignContent: 'center'
     }
 })
 

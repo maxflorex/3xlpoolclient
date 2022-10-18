@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react"
 import { Button, StatusBar, StyleSheet, Text, TouchableOpacity } from "react-native"
 import { TextInput } from "react-native-gesture-handler"
-import { getQuestion, saveQuestion, updateQuestion } from "../Api"
-import Layout from "../src/components/Layout"
+import { getQuestion, saveQuestion, updateQuestion } from "../../Api"
+import Layout from "../components/Layout"
 
 
 const PoolFormScreen = ({ navigation, route }) => {

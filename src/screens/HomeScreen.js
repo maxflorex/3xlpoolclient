@@ -1,7 +1,7 @@
 import React from 'react'
-import Checkbox from '../src/components/CheckBox'
-import Layout from '../src/components/Layout'
-import PoolList from '../src/components/PoolList'
+
+import Layout from '../components/Layout'
+import PoolList from '../components/PoolList'
 
 const HomeScreen = () => {
     return (

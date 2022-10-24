@@ -4,8 +4,6 @@ import { ScrollView } from 'react-native-gesture-handler'
 import CardItem from '../components/CardItem'
 import { COLORS } from '../components/Colors.js'
 
-import Layout from '../components/Layout'
-
 export const Items = [
     {
         id: 0,
@@ -48,8 +46,6 @@ const styles = StyleSheet.create({
     box: {
         backgroundColor: `${COLORS.dark}`,
         flex: 1,
-        paddingTop: 24,
-        paddingBottom: 24,
         heigth: 400
     }
 })

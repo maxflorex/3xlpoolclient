@@ -1,4 +1,5 @@
 import { createStackNavigator } from '@react-navigation/stack'
+import { COLORS } from '../components/Colors'
 import Intro from '../components/Intro'
 import LoginScreen from './LoginScreen'
 
@@ -12,7 +13,12 @@ export default function IntroScreen() {
       <Stack.Screen name='Intro' component={Intro} options={{
         headerShown: false
       }} />
-      <Stack.Screen name='Login' component={LoginScreen} />
+      <Stack.Screen name='Login' component={LoginScreen}
+        options={{
+          headerStyle: {
+            backgroundColor: `${COLORS.light}`
+          }
+        }} />
     </Stack.Navigator>
   )
 }

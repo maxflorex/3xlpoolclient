@@ -8,7 +8,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons'
 import QuestionFormScreen from './src/screens/QuestionFormScreen';
 import ResultsScreen from './src/screens/ResultsScreen';
 import IntroScreen from './src/screens/IntroScreen';
-import LoginScreen from './src/screens/LoginScreen';
+import SingleQuestionScreen from './src/screens/SingleQuestionScreen';
 
 // ! SCREEN NAMES
 const homeName = 'Home'
@@ -93,7 +93,8 @@ export default function App() {
 						// headerShown: false
 					}}
 				/>
-				<Tab.Screen name={askScreen} component={QuestionFormScreen}
+				{/* <Tab.Screen name={askScreen} component={QuestionFormScreen} */}
+				<Tab.Screen name={askScreen} component={SingleQuestionScreen}
 
 					options={{
 						title: 'ASK A QUESTION',

@@ -28,7 +28,7 @@ const reaction = [
 	},
 ]
 
-const RenderItem = ({icono}) => {
+const RenderItem = ({ icono }) => {
 	return (<TouchableOpacity>
 		<Ionicons name={icono} style={styles.icon} />
 	</TouchableOpacity>)
@@ -87,7 +87,7 @@ const styles = StyleSheet.create({
 		width: '100%',
 		backgroundColor: `${COLORS.light}`,
 		alignSelf: 'center',
-		fontSize: 36,
+		fontSize: 24,
 		textAlign: 'center',
 		padding: 16,
 		borderRadius: 12,
